@@ -76,7 +76,7 @@ namespace EmployeeMgt.EntityFrameworkCore.Seed.Host
                     UserName = AbpUserBase.AdminUserName,
                     Name = "admin",
                     Surname = "admin",
-                    EmailAddress = "admin@aspnetboilerplate.com",
+                    EmailAddress = "admin@shiawasesoftware.com",
                     IsEmailConfirmed = true,
                     IsActive = true
                 };

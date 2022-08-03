@@ -139,7 +139,7 @@ namespace EmployeeMgt.Web.Host.Startup
                     {
                         Name = "EmployeeMgt",
                         Email = string.Empty,
-                        Url = new Uri("https://twitter.com/aspboilerplate"),
+                        Url = new Uri("https://twitter.com/shiawasesoftware"),
                     },
                     License = new OpenApiLicense
                     {

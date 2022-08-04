@@ -185,8 +185,6 @@ namespace EmployeeMgt.HR.Employee
 
                                  })
                                 .Where(w=>w.UserName.Contains(userName))
-                                //.Skip(data.SkipCount)
-                                //.Take(data.MaxResultCount)
                                 .ToList();
 
             return new PagedResultDto<EmployeeDto>
@@ -200,9 +198,6 @@ namespace EmployeeMgt.HR.Employee
         public PagedResultDto<EmployeeDto> GetByGroup(PagedResultRequestDto data, string group)
         {
             var dataCount = _msEmployeeRepo.Count();
-
-            //data.MaxResultCount = 1;
-            //data.SkipCount = 0;
 
             var getData = (from input in _msEmployeeRepo.GetAll()
                            select new EmployeeDto
@@ -219,10 +214,8 @@ namespace EmployeeMgt.HR.Employee
                                Description = input.Description
 
                            })
-                                .Where(w => w.Group.Contains(group))
-                                //.Skip(data.SkipCount)
-                                //.Take(data.MaxResultCount)
-                                .ToList();
+                           .Where(w => w.Group.Contains(group))
+                           .ToList();
 
             return new PagedResultDto<EmployeeDto>
             {

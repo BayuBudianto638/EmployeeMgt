@@ -29,11 +29,7 @@ namespace EmployeeMgt.HR.Employee
         public void CreateMsEmployee(EmployeeDto input)
         {
             Logger.Info("CreateEmployee() - Started.");
-            Logger.DebugFormat("CreateEmployee() - Start checking before insert Employee. Parameters sent:{0}" +
-                        "Code = {1}{0}" +
-                        "Name = {2}{0}"
-                        , Environment.NewLine, input.Id);
-
+            
             var checkEmployee = (from A in _msEmployeeRepo.GetAll()
                                  where A.Id == input.Id
                                  select A).Any();
@@ -86,12 +82,6 @@ namespace EmployeeMgt.HR.Employee
         public JObject UpdateMsEmployee(EmployeeDto input)
         {
             Logger.Info("UpdateMsEmployee() - Started.");
-            Logger.DebugFormat("UpdateMsEmployee() - Start checking before update Employee. Parameters sent:{0}" +
-                        "EmployeeID = {1}{0}" +
-                        "EmployeeCode = {2}{0}" +
-                        "EmployeeName = {3}{0}"
-                        , Environment.NewLine, input.Id);
-
             JObject obj = new JObject();
 
             var checkEmployee = (from A in _msEmployeeRepo.GetAll()
@@ -141,7 +131,7 @@ namespace EmployeeMgt.HR.Employee
                 }
                 else
                 {
-                    obj.Add("message", "Edit Successfully, but can't change Employee Name & Code");
+                    obj.Add("message", "Edit Successfully, but can't change Employee");
                 }
 
                 try
@@ -164,7 +154,7 @@ namespace EmployeeMgt.HR.Employee
             }
             else
             {
-                Logger.ErrorFormat("UpdateMsEmployee() - ERROR Result = {0}.", "Employee Code or Employee Name Already Exist !");
+                Logger.ErrorFormat("UpdateMsEmployee() - ERROR Result = {0}.", "Employee Name Already Exist !");
                 throw new UserFriendlyException("Employee Code or Employee Name Already Exist !");
             }
             Logger.Info("UpdateMsEmployee() - Finished.");
